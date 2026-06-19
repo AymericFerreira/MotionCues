@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Motion Cues</string>
+    <string name="tile_label">Motion Cues</string>
+
+    <!-- Ko-fi support link. Replace with your real Ko-fi page. -->
+    <string name="kofi_url" translatable="false">https://ko-fi.com/aymericferreira</string>
+    <string name="source_url" translatable="false">https://github.com/AymericFerreira/MotionCues</string>
+
+    <!-- Notification -->
+    <string name="notif_channel_name">Motion Cues overlay</string>
+    <string name="notif_channel_desc">Shows while the motion-cue dots overlay is running.</string>
+    <string name="notif_title">Motion Cues is on</string>
+    <string name="notif_text_active">Dots are showing over your apps.</string>
+    <string name="notif_text_monitoring">Watching for vehicle motion…</string>
+    <string name="notif_stop">Stop</string>
+
+    <!-- Onboarding -->
+    <string name="onboard_title">Motion Cues</string>
+    <string name="onboard_intro">Reduce car-sickness with a field of dots that drift opposite to your vehicle\'s motion, giving your eyes a cue that matches what your inner ear feels.</string>
+    <string name="onboard_limitation_title">Works over your apps</string>
+    <string name="onboard_limitation_body">The dots appear over normal apps like readers and browsers. They cannot be drawn over the status bar, notification shade, Quick Settings, or lock screen — that needs a system feature Android hasn\'t released yet. Every third-party app has this limit.</string>
+    <string name="onboard_perm_overlay_title">Allow drawing over other apps</string>
+    <string name="onboard_perm_overlay_body">Required to show the dots on top of the app you\'re reading.</string>
+    <string name="onboard_perm_overlay_button">Grant overlay permission</string>
+    <string name="onboard_perm_overlay_granted">Overlay permission granted</string>
+    <string name="onboard_perm_notif_title">Allow notifications</string>
+    <string name="onboard_perm_notif_body">A small ongoing notification keeps the overlay running while you travel.</string>
+    <string name="onboard_perm_notif_button">Allow notifications</string>
+    <string name="onboard_perm_notif_granted">Notifications allowed</string>
+    <string name="onboard_continue">Continue</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Motion Cues</string>
+    <string name="settings_start">Start overlay</string>
+    <string name="settings_stop">Stop overlay</string>
+    <string name="settings_auto_detect">Auto-start in a moving vehicle</string>
+    <string name="settings_auto_detect_desc">Uses motion sensors only — no location, no tracking.</string>
+    <string name="settings_pattern">Pattern</string>
+    <string name="settings_pattern_dynamic">Dynamic dots</string>
+    <string name="settings_pattern_static">Static grid</string>
+    <string name="settings_color">Dot color</string>
+    <string name="settings_count">Number of dots</string>
+    <string name="settings_size">Dot size</string>
+    <string name="settings_sensitivity">Motion sensitivity</string>
+    <string name="settings_dimming">Background dimming</string>
+    <string name="settings_about">About &amp; support</string>
+    <string name="settings_needs_overlay">Grant the overlay permission to start.</string>
+
+    <!-- About -->
+    <string name="about_title">About</string>
+    <string name="about_tagline">Free and open-source motion-sickness dots for Android.</string>
+    <string name="about_privacy_title">Privacy</string>
+    <string name="about_privacy_body">No data is collected. No analytics, no ads, no network access. Everything runs on your device.</string>
+    <string name="about_license_title">License</string>
+    <string name="about_license_body">Released under the GNU GPL v3.</string>
+    <string name="about_support_button">Support on Ko-fi ❤️</string>
+    <string name="about_source_button">View source</string>
+    <string name="about_version">Version %1$s</string>
+</resources>

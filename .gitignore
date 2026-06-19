@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+build/
+*/build/
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Local SDK location (machine-specific)
+local.properties
+
+# Keystores / signing (never commit secrets)
+*.jks
+*.keystore
+keystore.properties
+
+# OS
+.DS_Store
