@@ -1,0 +1,35 @@
+# F-Droid build metadata for Motion Cues.
+#
+# IMPORTANT: this file belongs in the fdroiddata repository, NOT this repo.
+# To submit the app to F-Droid:
+#   1. Tag a release in this repo:   git tag v1.0.0 && git push origin v1.0.0
+#   2. Fork https://gitlab.com/fdroid/fdroiddata
+#   3. Add this file as:  metadata/io.github.aymericferreira.motioncues.yml
+#   4. Validate:  fdroid lint io.github.aymericferreira.motioncues
+#   5. Open a merge request against fdroiddata.
+#
+# App name, descriptions, changelogs, and screenshots are pulled automatically
+# from fastlane/metadata/android/en-US/ in this repository.
+
+Categories:
+  - Sports & Health
+License: GPL-3.0-only
+AuthorName: Aymeric Ferreira
+SourceCode: https://github.com/AymericFerreira/MotionCues
+IssueTracker: https://github.com/AymericFerreira/MotionCues/issues
+
+RepoType: git
+Repo: https://github.com/AymericFerreira/MotionCues.git
+
+Builds:
+  - versionName: 1.0.0
+    versionCode: 1
+    commit: v1.0.0
+    subdir: app
+    gradle:
+      - yes
+
+AutoUpdateMode: Version v%v
+UpdateCheckMode: Tags
+CurrentVersion: 1.0.0
+CurrentVersionCode: 1

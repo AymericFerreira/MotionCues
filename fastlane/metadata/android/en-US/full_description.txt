@@ -1,0 +1,30 @@
+Motion Cues helps reduce the car sickness many people feel when reading or using a phone as a passenger.
+
+When your eyes are fixed on a screen but your inner ear feels the vehicle move, the mismatch can cause nausea. Motion Cues draws a field of dots over whatever you're using that drift in response to the vehicle's motion — sliding as you turn, accelerate, and brake — giving your peripheral vision a cue that matches what your body feels. It's inspired by Apple's Vehicle Motion Cues, built for Android.
+
+HOW IT WORKS
+• The dots are driven by your phone's accelerometer — no GPS, no internet.
+• Turn left and the dots slide right; brake and they move up. The effect is subtle and sits behind your content.
+• Works over everyday apps like e-readers, browsers, and articles.
+
+CUSTOMIZE EVERYTHING (free)
+• Dot color, number, and size
+• Motion sensitivity
+• Background dimming
+• Dynamic drifting dots, or a static reference grid
+
+AUTOMATIC OR MANUAL
+• Auto-start when it senses you're in a moving vehicle (motion sensors only — no location)
+• Or toggle it yourself from the app or a Quick Settings tile
+
+PRIVATE BY DESIGN
+• No data collection, no analytics, no ads, no network access
+• Everything runs on your device; your settings never leave your phone
+• Free and open-source (GPLv3)
+
+GOOD TO KNOW
+The dots appear over your apps, but Android does not yet let any third-party app draw over the system status bar, notification shade, Quick Settings, or lock screen. Every app of this kind shares that limit.
+
+Motion Cues is free. If it helps you, you can support development on Ko-fi.
+
+Motion Cues is not a medical device and is not a substitute for professional medical advice.

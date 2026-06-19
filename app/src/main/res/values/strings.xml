@@ -2,7 +2,7 @@
     <string name="app_name">Motion Cues</string>
     <string name="tile_label">Motion Cues</string>
 
-    <!-- Ko-fi support link. Replace with your real Ko-fi page. -->
+    <!-- Ko-fi support link. Create this page (or change the handle) before release. -->
     <string name="kofi_url" translatable="false">https://ko-fi.com/aymericferreira</string>
     <string name="source_url" translatable="false">https://github.com/AymericFerreira/MotionCues</string>
 

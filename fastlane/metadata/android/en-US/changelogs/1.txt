@@ -1,0 +1,1 @@
+First release: a motion-driven dot overlay to help reduce car sickness. Customize dot color, count, size, sensitivity, background dimming, and pattern (dynamic or static). Includes vehicle auto-detection (sensors only, no location) and a Quick Settings tile. Free, open-source, no ads, no tracking.
