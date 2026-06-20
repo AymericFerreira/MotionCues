@@ -47,6 +47,12 @@
     <string name="settings_dimming">Background dimming</string>
     <string name="settings_about">About &amp; support</string>
     <string name="settings_needs_overlay">Grant the overlay permission to start.</string>
+    <string name="settings_backup">Import / export</string>
+    <string name="settings_export">Export</string>
+    <string name="settings_import">Import</string>
+    <string name="toast_settings_exported">Settings exported</string>
+    <string name="toast_settings_imported">Settings imported</string>
+    <string name="toast_settings_error">Couldn\'t read that settings file</string>
 
     <!-- About -->
     <string name="about_title">About</string>

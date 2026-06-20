@@ -14,6 +14,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
@@ -53,6 +54,8 @@ fun SettingsScreen(
     onStart: () -> Unit,
     onStop: () -> Unit,
     onAbout: () -> Unit,
+    onExport: () -> Unit,
+    onImport: () -> Unit,
     actions: SettingsActions,
 ) {
     Scaffold(
@@ -164,6 +167,16 @@ fun SettingsScreen(
                 range = Settings.BACKGROUND_DIM_RANGE,
                 onValueChange = actions::setDimming,
             )
+
+            SectionTitle(stringResource(R.string.settings_backup))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedButton(onClick = onExport, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.settings_export))
+                }
+                OutlinedButton(onClick = onImport, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.settings_import))
+                }
+            }
         }
     }
 }

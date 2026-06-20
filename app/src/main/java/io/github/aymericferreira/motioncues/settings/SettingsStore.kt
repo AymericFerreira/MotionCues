@@ -38,6 +38,20 @@ class SettingsStore(private val context: Context) {
     suspend fun setPatternStyle(value: PatternStyle) = put(Keys.PATTERN, value.name)
     suspend fun setAutoDetect(value: Boolean) = put(Keys.AUTO_DETECT, value)
 
+    /** Atomically replace every setting in one write (used by import). Values are coerced. */
+    suspend fun setAll(s: Settings) {
+        context.dataStore.edit {
+            it[Keys.DOT_COLOR] = s.dotColor
+            it[Keys.DOT_COUNT] = s.dotCount.coerceIn(Settings.DOT_COUNT_RANGE)
+            it[Keys.DOT_SIZE_DP] = s.dotSizeDp.coerceIn(Settings.DOT_SIZE_DP_RANGE)
+            it[Keys.DOT_OPACITY] = s.dotOpacity.coerceIn(Settings.DOT_OPACITY_RANGE)
+            it[Keys.SENSITIVITY] = s.sensitivity.coerceIn(Settings.SENSITIVITY_RANGE)
+            it[Keys.BACKGROUND_DIM] = s.backgroundDim.coerceIn(Settings.BACKGROUND_DIM_RANGE)
+            it[Keys.PATTERN] = s.patternStyle.name
+            it[Keys.AUTO_DETECT] = s.autoDetect
+        }
+    }
+
     private suspend fun <T> put(key: Preferences.Key<T>, value: T) {
         context.dataStore.edit { it[key] = value }
     }

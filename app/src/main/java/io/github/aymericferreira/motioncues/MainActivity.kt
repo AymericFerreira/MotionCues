@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings as AndroidSettings
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
@@ -21,9 +22,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import io.github.aymericferreira.motioncues.R
 import io.github.aymericferreira.motioncues.overlay.OverlayService
 import io.github.aymericferreira.motioncues.settings.PatternStyle
 import io.github.aymericferreira.motioncues.settings.Settings
+import io.github.aymericferreira.motioncues.settings.SettingsCodec
 import io.github.aymericferreira.motioncues.settings.SettingsStore
 import io.github.aymericferreira.motioncues.ui.AboutScreen
 import io.github.aymericferreira.motioncues.ui.OnboardingScreen
@@ -32,7 +35,9 @@ import io.github.aymericferreira.motioncues.ui.SettingsScreen
 import io.github.aymericferreira.motioncues.ui.theme.MotionCuesTheme
 import io.github.aymericferreira.motioncues.util.hasNotificationPermission
 import io.github.aymericferreira.motioncues.util.hasOverlayPermission
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,6 +80,44 @@ private fun MotionCuesRoot() {
         ActivityResultContracts.RequestPermission()
     ) { granted -> hasNotif = granted }
 
+    val exportLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.CreateDocument("text/plain")
+    ) { uri ->
+        if (uri != null) scope.launch(Dispatchers.IO) {
+            val ok = runCatching {
+                context.contentResolver.openOutputStream(uri)?.use {
+                    it.write(SettingsCodec.encode(settings).toByteArray())
+                }
+            }.isSuccess
+            withContext(Dispatchers.Main) {
+                Toast.makeText(
+                    context,
+                    context.getString(if (ok) R.string.toast_settings_exported else R.string.toast_settings_error),
+                    Toast.LENGTH_SHORT,
+                ).show()
+            }
+        }
+    }
+
+    val importLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        if (uri != null) scope.launch(Dispatchers.IO) {
+            val ok = runCatching {
+                val text = context.contentResolver.openInputStream(uri)
+                    ?.bufferedReader()?.use { it.readText() } ?: error("empty")
+                store.setAll(SettingsCodec.decode(text))
+            }.isSuccess
+            withContext(Dispatchers.Main) {
+                Toast.makeText(
+                    context,
+                    context.getString(if (ok) R.string.toast_settings_imported else R.string.toast_settings_error),
+                    Toast.LENGTH_SHORT,
+                ).show()
+            }
+        }
+    }
+
     val requestOverlay: () -> Unit = {
         overlayLauncher.launch(
             Intent(
@@ -113,6 +156,8 @@ private fun MotionCuesRoot() {
             },
             onStop = { OverlayService.stop(context) },
             onAbout = { screen = Screen.ABOUT },
+            onExport = { exportLauncher.launch("motion-cues-settings.txt") },
+            onImport = { importLauncher.launch(arrayOf("text/plain", "application/octet-stream")) },
             actions = object : SettingsActions {
                 override fun setColor(value: Int) { scope.launch { store.setDotColor(value) } }
                 override fun setCount(value: Int) { scope.launch { store.setDotCount(value) } }
