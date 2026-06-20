@@ -38,10 +38,15 @@ store-specific extras and the manual console steps.
   motion-cue dots over the app you're reading).
 
 ### Signing & upload
-1. Create an upload keystore (keep it safe, never commit it — it's gitignored):
+The `release` signing config is already wired up — it reads a gitignored `keystore.properties`
+(see `keystore.properties.example`). To produce a signed bundle:
+1. Generate an upload keystore (keep it safe, never commit it — `*.jks` is gitignored):
    `keytool -genkey -v -keystore upload.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload`
-2. Add a `signingConfig` for `release` (read from `keystore.properties`, also gitignored).
-3. `./gradlew bundleRelease` → upload the `.aab`, enroll in Play App Signing.
+2. Copy `keystore.properties.example` → `keystore.properties` and fill in the values.
+3. `./gradlew bundleRelease` → `app/build/outputs/bundle/release/app-release.aab`. Upload it and
+   enroll in Play App Signing.
+
+Without `keystore.properties`, the release build still assembles but is unsigned (fine for CI).
 
 ---
 
