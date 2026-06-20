@@ -1,0 +1,15 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Themed-icon silhouette: an even ring of dots (system applies a single tint via alpha). -->
+    <path android:fillColor="#FFFFFFFF" android:pathData="M54,24m-3.4,0a3.4,3.4 0,1 1,6.8,0a3.4,3.4 0,1 1,-6.8,0" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M75.2,32.8m-3.4,0a3.4,3.4 0,1 1,6.8,0a3.4,3.4 0,1 1,-6.8,0" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M84,54m-3.4,0a3.4,3.4 0,1 1,6.8,0a3.4,3.4 0,1 1,-6.8,0" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M75.2,75.2m-3.4,0a3.4,3.4 0,1 1,6.8,0a3.4,3.4 0,1 1,-6.8,0" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M54,84m-3.4,0a3.4,3.4 0,1 1,6.8,0a3.4,3.4 0,1 1,-6.8,0" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M32.8,75.2m-3.4,0a3.4,3.4 0,1 1,6.8,0a3.4,3.4 0,1 1,-6.8,0" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M24,54m-3.4,0a3.4,3.4 0,1 1,6.8,0a3.4,3.4 0,1 1,-6.8,0" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M32.8,32.8m-3.4,0a3.4,3.4 0,1 1,6.8,0a3.4,3.4 0,1 1,-6.8,0" />
+</vector>
