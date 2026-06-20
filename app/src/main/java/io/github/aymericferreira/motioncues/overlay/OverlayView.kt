@@ -59,6 +59,8 @@ class OverlayView(context: Context) : View(context) {
     /** Live-apply settings. Rebuilds the field only when count/pattern actually change. */
     fun applySettings(s: Settings) {
         dotPaint.color = s.dotColor
+        // Opacity slider overrides the color's alpha channel.
+        dotPaint.alpha = (s.dotOpacity.coerceIn(0f, 1f) * 255).toInt()
         dotRadiusPx = s.dotSizeDp * density
         scrimAlpha = (s.backgroundDim.coerceIn(0f, 1f) * 255).toInt()
         scrimPaint.color = Color.argb(scrimAlpha, 0, 0, 0)

@@ -3,6 +3,8 @@ package io.github.aymericferreira.motioncues.overlay
 import io.github.aymericferreira.motioncues.model.Vec2
 import io.github.aymericferreira.motioncues.settings.PatternStyle
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import kotlin.math.abs
@@ -56,5 +58,33 @@ class DotFieldTest {
         field.rebuild(count = 16, pattern = PatternStyle.STATIC)
         assertEquals(16, field.dots.size)
         assertEquals(PatternStyle.STATIC, field.pattern)
+    }
+
+    // ---- Edges pattern ----
+
+    private val inset = 0.1f
+
+    private fun onBorder(x: Float, y: Float, tol: Float = 1e-3f): Boolean =
+        abs(x - inset) < tol || abs(x - (1f - inset)) < tol ||
+            abs(y - inset) < tol || abs(y - (1f - inset)) < tol
+
+    @Test fun `edges pattern places all dots on the border with a clear center`() {
+        val field = DotField(count = 8, pattern = PatternStyle.EDGES)
+        assertEquals(8, field.dots.size)
+        field.dots.forEach { d ->
+            assertTrue("dot $d should sit on the edge ring", onBorder(d.x, d.y))
+            val inCenter = d.x > 0.3f && d.x < 0.7f && d.y > 0.3f && d.y < 0.7f
+            assertFalse("dot $d must not be in the clear center", inCenter)
+        }
+    }
+
+    @Test fun `edges dots travel along the border under drift and stay on it`() {
+        val field = DotField(count = 4, pattern = PatternStyle.EDGES)
+        val before = field.dots.map { it.x to it.y }
+        repeat(60) { field.update(Vec2(0.3f, 0.2f), dt = 0.05f) }
+        assertNotEquals("edge dots should move under drift", before, field.dots.map { it.x to it.y })
+        field.dots.forEach { d ->
+            assertTrue("dot $d left the border ring", onBorder(d.x, d.y))
+        }
     }
 }

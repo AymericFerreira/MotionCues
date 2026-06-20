@@ -2,6 +2,8 @@ package io.github.aymericferreira.motioncues.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -34,13 +36,14 @@ interface SettingsActions {
     fun setColor(value: Int)
     fun setCount(value: Int)
     fun setSize(value: Float)
+    fun setOpacity(value: Float)
     fun setSensitivity(value: Float)
     fun setDimming(value: Float)
     fun setPattern(value: PatternStyle)
     fun setAutoDetect(value: Boolean)
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun SettingsScreen(
     settings: Settings,
@@ -98,7 +101,12 @@ fun SettingsScreen(
             )
 
             SectionTitle(stringResource(R.string.settings_pattern))
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                FilterChip(
+                    selected = settings.patternStyle == PatternStyle.EDGES,
+                    onClick = { actions.setPattern(PatternStyle.EDGES) },
+                    label = { Text(stringResource(R.string.settings_pattern_edges)) },
+                )
                 FilterChip(
                     selected = settings.patternStyle == PatternStyle.DYNAMIC,
                     onClick = { actions.setPattern(PatternStyle.DYNAMIC) },
@@ -131,6 +139,14 @@ fun SettingsScreen(
                 valueText = "${settings.dotSizeDp.roundToInt()} dp",
                 range = Settings.DOT_SIZE_DP_RANGE,
                 onValueChange = actions::setSize,
+            )
+
+            LabeledSlider(
+                label = stringResource(R.string.settings_opacity),
+                value = settings.dotOpacity,
+                valueText = "${(settings.dotOpacity * 100).roundToInt()}%",
+                range = Settings.DOT_OPACITY_RANGE,
+                onValueChange = actions::setOpacity,
             )
 
             LabeledSlider(

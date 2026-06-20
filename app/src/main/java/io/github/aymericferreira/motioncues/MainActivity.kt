@@ -117,6 +117,7 @@ private fun MotionCuesRoot() {
                 override fun setColor(value: Int) { scope.launch { store.setDotColor(value) } }
                 override fun setCount(value: Int) { scope.launch { store.setDotCount(value) } }
                 override fun setSize(value: Float) { scope.launch { store.setDotSizeDp(value) } }
+                override fun setOpacity(value: Float) { scope.launch { store.setDotOpacity(value) } }
                 override fun setSensitivity(value: Float) { scope.launch { store.setSensitivity(value) } }
                 override fun setDimming(value: Float) { scope.launch { store.setBackgroundDim(value) } }
                 override fun setPattern(value: PatternStyle) { scope.launch { store.setPatternStyle(value) } }

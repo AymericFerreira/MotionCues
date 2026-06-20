@@ -36,11 +36,13 @@
     <string name="settings_auto_detect">Auto-start in a moving vehicle</string>
     <string name="settings_auto_detect_desc">Uses motion sensors only — no location, no tracking.</string>
     <string name="settings_pattern">Pattern</string>
-    <string name="settings_pattern_dynamic">Dynamic dots</string>
+    <string name="settings_pattern_dynamic">Dynamic</string>
+    <string name="settings_pattern_edges">Edges</string>
     <string name="settings_pattern_static">Static grid</string>
     <string name="settings_color">Dot color</string>
     <string name="settings_count">Number of dots</string>
     <string name="settings_size">Dot size</string>
+    <string name="settings_opacity">Dot opacity</string>
     <string name="settings_sensitivity">Motion sensitivity</string>
     <string name="settings_dimming">Background dimming</string>
     <string name="settings_about">About &amp; support</string>

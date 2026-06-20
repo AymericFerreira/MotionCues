@@ -29,6 +29,8 @@ class SettingsStore(private val context: Context) {
         put(Keys.DOT_COUNT, value.coerceIn(Settings.DOT_COUNT_RANGE))
     suspend fun setDotSizeDp(value: Float) =
         put(Keys.DOT_SIZE_DP, value.coerceIn(Settings.DOT_SIZE_DP_RANGE))
+    suspend fun setDotOpacity(value: Float) =
+        put(Keys.DOT_OPACITY, value.coerceIn(Settings.DOT_OPACITY_RANGE))
     suspend fun setSensitivity(value: Float) =
         put(Keys.SENSITIVITY, value.coerceIn(Settings.SENSITIVITY_RANGE))
     suspend fun setBackgroundDim(value: Float) =
@@ -44,6 +46,7 @@ class SettingsStore(private val context: Context) {
         dotColor = this[Keys.DOT_COLOR] ?: Settings.DEFAULT_DOT_COLOR,
         dotCount = this[Keys.DOT_COUNT] ?: Settings.DEFAULT_DOT_COUNT,
         dotSizeDp = this[Keys.DOT_SIZE_DP] ?: Settings.DEFAULT_DOT_SIZE_DP,
+        dotOpacity = this[Keys.DOT_OPACITY] ?: Settings.DEFAULT_DOT_OPACITY,
         sensitivity = this[Keys.SENSITIVITY] ?: Settings.DEFAULT_SENSITIVITY,
         backgroundDim = this[Keys.BACKGROUND_DIM] ?: Settings.DEFAULT_BACKGROUND_DIM,
         patternStyle = PatternStyle.fromName(this[Keys.PATTERN]),
@@ -54,6 +57,7 @@ class SettingsStore(private val context: Context) {
         val DOT_COLOR = intPreferencesKey("dot_color")
         val DOT_COUNT = intPreferencesKey("dot_count")
         val DOT_SIZE_DP = floatPreferencesKey("dot_size_dp")
+        val DOT_OPACITY = floatPreferencesKey("dot_opacity")
         val SENSITIVITY = floatPreferencesKey("sensitivity")
         val BACKGROUND_DIM = floatPreferencesKey("background_dim")
         val PATTERN = stringPreferencesKey("pattern_style")
